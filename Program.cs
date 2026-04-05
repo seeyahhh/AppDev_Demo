@@ -104,7 +104,7 @@ static double PromptDouble(string label, string errorMsg)
 
 static double PromptDiscount()
 {
-    Console.Write("\nDiscount (% -- enter 0 if none): ");
+    Console.Write("\nEnter Discount % (e.g. 10 for 10% off, or 0 for none): ");
     double.TryParse(Console.ReadLine(), out double discount);
     return Math.Clamp(discount, 0, 100);
 }
@@ -244,7 +244,7 @@ class ReceiptPrinter
         if (r.DiscountPercent > 0)
             Console.WriteLine($" {"Discount (" + r.DiscountPercent + "%):",-30} PHP {-r.GetDiscountAmount(),6:F2}");
 
-        Console.WriteLine($" {"VAT (12%):",-30} PHP {r.GetVAT(),6:F2}");
+        Console.WriteLine($" {"VAT (12% applied):",-30} PHP {r.GetVAT(),6:F2}");
         Console.WriteLine(dline);
         Console.WriteLine($" {"TOTAL:",-30} PHP {r.GetTotal(),6:F2}");
         Console.WriteLine(dline);
